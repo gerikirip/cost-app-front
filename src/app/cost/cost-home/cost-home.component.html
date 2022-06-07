@@ -1,0 +1,18 @@
+<div class="container">
+  <app-card>
+    <header>
+      {{ title }}
+    </header>
+    <ng-container *ngIf="costs$ | async as costs ">
+        <div class="table">
+            <ng-container *ngIf="categoriesSelect$ | async as categories ">
+              <ng-container *ngIf="modesSelect$ | async as modes ">
+                <h2>Új költség felvétele:</h2>
+                <app-cost-form [categories]="categories" [modes]="modes" (onAddCost)="addCost($event)"></app-cost-form>
+              </ng-container>
+            </ng-container>
+              <app-table [rows]="(costs)" [columns]="costHeader" [columnKeys]="costHeaderKey" (onDelete)="deleteCost($event)"></app-table>
+            </div>
+      </ng-container>
+  </app-card>
+</div>

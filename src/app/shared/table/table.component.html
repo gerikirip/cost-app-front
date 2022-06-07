@@ -1,0 +1,25 @@
+<section class="example-container mat-elevation-z8" tabindex="0">
+  <mat-table [dataSource]="dataSource">
+    <ng-container [matColumnDef]="column.key" *ngFor="let column of columns">
+      <mat-header-cell *matHeaderCellDef>
+        {{ column.label }}
+      </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        {{ element[column.key] }}
+      </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Törlés </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-fab (click)="delete(element.id)" color="warn">
+        <mat-icon>delete</mat-icon>
+      </button> </mat-cell>
+
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="columnKeys; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: columnKeys"></mat-row>
+  </mat-table>
+</section>
+
+

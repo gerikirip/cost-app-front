@@ -1,0 +1,25 @@
+<div class="container">
+  <app-card>
+    <header>
+      {{ title }}
+    </header>
+    <div class="table">
+      <ng-container *ngIf="categories$ | async as categories">
+        <h2>Új kategória felvétele:</h2>
+        <app-category-form (onAddCategory)="addCategory($event)"></app-category-form>
+        <div>Ha kitörölsz egy kategóriát a hozzá tartozó költségek is törlődnek!</div>
+        <div>Kétszer nem szerepelhet ugyan olyan nevű kategória!</div>
+        <div class="flex-cont">
+          <div class="flex-item-table">
+            <app-table [rows]="(categories)" [columns]="categoryHeader" [columnKeys]="categoryHeaderKey" (onDelete)="deleteCategory($event)"></app-table>
+          </div>
+          <div class="flex-item-chart">
+            <ng-container *ngIf="categoriesWithoutId$ | async as categoriesWithoutId">
+              <app-chart [categoriesWithoutId]="categoriesWithoutId"></app-chart>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </app-card>
+</div>

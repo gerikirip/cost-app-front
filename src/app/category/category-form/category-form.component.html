@@ -1,0 +1,7 @@
+<div class="container">
+  <form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">
+    <app-input label="Név" type="input" [control]="$any(categoryForm).get('name')"></app-input>
+    <button type="submit" class="btn" mat-fab color="primary" >+</button>
+  </form>
+</div>
+

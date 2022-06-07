@@ -1,0 +1,10 @@
+
+<form [formGroup]="costForm" (ngSubmit)="onSubmit()">
+  <app-input label="Név" type="input" [control]="$any(costForm).get('name')"></app-input>
+  <app-input label="Összeg" type="input" [control]="$any(costForm).get('amount')"></app-input>
+  <app-input label="Mennyiség" type="input" [control]="$any(costForm).get('quantity')"></app-input>
+  <app-input label="Dátum" type="date" [control]="$any(costForm).get('date')"></app-input>
+  <app-input label="Kategória" [selectItems]="categories" type="select" [control]="$any(costForm).get('category')"></app-input>
+  <app-input label="Fizetés módja" [selectItems]="modes" type="select" [control]="$any(costForm).get('mode')"></app-input>
+  <button type="submit" class="btn" mat-fab color="primary" >+</button>
+</form>
